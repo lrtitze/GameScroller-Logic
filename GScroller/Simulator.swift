@@ -12,7 +12,15 @@
 
 import UIKit
 
+let ScreenCorner:CGPoint = CGPointMake(325, 197)
+let DeviceScreenWidth:CGFloat  = 300
+let DeviceScreenHeight:CGFloat = 225
+
+let BackgroundWidth:CGFloat  = 512
+let BackgroundHeight:CGFloat = 384
+
 public class Simulator : NSObject {
+
 
     //// Drawing Methods
 
@@ -37,24 +45,24 @@ public class Simulator : NSObject {
         let bgGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [gradientStart.CGColor, UIColor(red: 0.572, green: 0.846, blue: 0.925, alpha: 1.000).CGColor, gradientStop1.CGColor, gradientStop2.CGColor, gradientEnd.CGColor], [0, 0.16, 0.31, 0.67, 1])
 
         //// Variable Declarations
-        let screenCorner = CGPointMake(500, 350)
-        let deviceScreenWidth = 600
-        let deviceScreenHeight = 450
-        let backgroundWidth = 1024
-        let backgroundHeight = 768
+//        let screenCorner = CGPointMake(325, 197)
+//        let deviceScreenWidth = CGFloat(300)
+//        let deviceScreenHeight = CGFloat(225)
+//        let backgroundWidth = CGFloat(512)
+//        let backgroundHeight = CGFloat(384)
 
         //// Background Drawing
         CGContextSaveGState(context)
         CGContextTranslateCTM(context, backgroundXOffset, backgroundYOffset)
 
-        let backgroundRect = CGRectMake(screenCorner.x, screenCorner.y, backgroundWidth, backgroundHeight)
+        let backgroundRect = CGRectMake(ScreenCorner.x, ScreenCorner.y, BackgroundWidth, BackgroundHeight)
         let backgroundPath = UIBezierPath(rect: backgroundRect)
         CGContextSaveGState(context)
         backgroundPath.addClip()
-        let backgroundResizeRatio: CGFloat = min(backgroundRect.width / 1024, backgroundRect.height / 768)
+        let backgroundResizeRatio: CGFloat = min(backgroundRect.width / 512, backgroundRect.height / 384)
         CGContextDrawRadialGradient(context, bgGradient,
-            CGPointMake(backgroundRect.midX + 4.19 * backgroundResizeRatio, backgroundRect.midY + -4.19 * backgroundResizeRatio), 711.7 * backgroundResizeRatio,
-            CGPointMake(backgroundRect.midX + 323.57 * backgroundResizeRatio, backgroundRect.midY + 167.63 * backgroundResizeRatio), 25.12 * backgroundResizeRatio,
+            CGPointMake(backgroundRect.midX + 2.09 * backgroundResizeRatio, backgroundRect.midY + -2.09 * backgroundResizeRatio), 355.85 * backgroundResizeRatio,
+            CGPointMake(backgroundRect.midX + 161.78 * backgroundResizeRatio, backgroundRect.midY + 83.82 * backgroundResizeRatio), 12.56 * backgroundResizeRatio,
             UInt32(kCGGradientDrawsBeforeStartLocation) | UInt32(kCGGradientDrawsAfterEndLocation))
         CGContextRestoreGState(context)
         bgBorder.setStroke()
@@ -67,7 +75,7 @@ public class Simulator : NSObject {
         //// DeviceScreen Drawing
         CGContextSaveGState(context)
 
-        let deviceScreenPath = UIBezierPath(rect: CGRectMake(screenCorner.x, screenCorner.y, deviceScreenWidth, deviceScreenHeight))
+        let deviceScreenPath = UIBezierPath(rect: CGRectMake(ScreenCorner.x, ScreenCorner.y, DeviceScreenWidth, DeviceScreenHeight))
         UIColor.blackColor().setStroke()
         deviceScreenPath.lineWidth = 2
         deviceScreenPath.stroke()
@@ -79,7 +87,7 @@ public class Simulator : NSObject {
         CGContextSaveGState(context)
         CGContextTranslateCTM(context, characterXOffset, characterYOffset)
 
-        var ovalPath = UIBezierPath(ovalInRect: CGRectMake(screenCorner.x, screenCorner.y, 42, 42))
+        var ovalPath = UIBezierPath(ovalInRect: CGRectMake(ScreenCorner.x, ScreenCorner.y, 20, 20))
         characterColor.setFill()
         ovalPath.fill()
 
