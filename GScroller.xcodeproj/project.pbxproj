@@ -13,6 +13,8 @@
 		635472CD19EE16FD00E2B101 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635472CC19EE16FD00E2B101 /* Images.xcassets */; };
 		635472D019EE16FD00E2B101 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635472CE19EE16FD00E2B101 /* LaunchScreen.xib */; };
 		635472DC19EE16FD00E2B101 /* GScrollerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635472DB19EE16FD00E2B101 /* GScrollerTests.swift */; };
+		635472E619EE17F100E2B101 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635472E519EE17F100E2B101 /* Simulator.swift */; };
+		635472E819EE196200E2B101 /* SimulationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635472E719EE196200E2B101 /* SimulationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		635472D519EE16FD00E2B101 /* GScrollerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GScrollerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		635472DA19EE16FD00E2B101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		635472DB19EE16FD00E2B101 /* GScrollerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GScrollerTests.swift; sourceTree = "<group>"; };
+		635472E519EE17F100E2B101 /* Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
+		635472E719EE196200E2B101 /* SimulationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				635472C519EE16FD00E2B101 /* AppDelegate.swift */,
 				635472C719EE16FD00E2B101 /* ViewController.swift */,
 				635472C919EE16FD00E2B101 /* Main.storyboard */,
+				635472E719EE196200E2B101 /* SimulationView.swift */,
+				635472E519EE17F100E2B101 /* Simulator.swift */,
 				635472CC19EE16FD00E2B101 /* Images.xcassets */,
 				635472CE19EE16FD00E2B101 /* LaunchScreen.xib */,
 				635472C319EE16FD00E2B101 /* Supporting Files */,
@@ -214,6 +220,8 @@
 			files = (
 				635472C819EE16FD00E2B101 /* ViewController.swift in Sources */,
 				635472C619EE16FD00E2B101 /* AppDelegate.swift in Sources */,
+				635472E619EE17F100E2B101 /* Simulator.swift in Sources */,
+				635472E819EE196200E2B101 /* SimulationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
