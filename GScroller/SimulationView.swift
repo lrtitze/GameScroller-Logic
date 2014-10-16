@@ -15,8 +15,8 @@ class SimulationView: UIView {
   var charXOffset = CGFloat(10.0)
   var charYOffset = CGFloat(10.0)
   
-  let borderOriginBoundary:CGFloat = 8.0
-  let borderExtremeBoundary:CGFloat = 24.0
+  let borderOriginBoundary:CGFloat = 1.0
+  let borderExtremeBoundary:CGFloat = 21.0
   
   let farRightLimit:CGFloat = DeviceScreenWidth - BackgroundWidth
   let bottomLimit:CGFloat = DeviceScreenHeight - BackgroundHeight
