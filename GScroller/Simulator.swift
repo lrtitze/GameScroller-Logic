@@ -39,7 +39,7 @@ public class Simulator : NSObject {
 
         let bgBorder = UIColor(hue: gradientStop2HueComponent, saturation: 0.8, brightness: gradientStop2BrightnessComponent, alpha: CGColorGetAlpha(gradientStop2.CGColor))
         let gradientEnd = UIColor(red: 0.508, green: 0.554, blue: 0.981, alpha: 1.000)
-        let characterColor = UIColor(red: 0.279, green: 1.000, blue: 0.000, alpha: 1.000)
+        let characterColor = UIColor(red: 0.879, green: 0.300, blue: 0.300, alpha: 1.000)
 
         //// Gradient Declarations
         let bgGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [gradientStart.CGColor, UIColor(red: 0.572, green: 0.846, blue: 0.925, alpha: 1.000).CGColor, gradientStop1.CGColor, gradientStop2.CGColor, gradientEnd.CGColor], [0, 0.16, 0.31, 0.67, 1])
