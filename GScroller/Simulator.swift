@@ -20,86 +20,86 @@ let BackgroundWidth:CGFloat  = 512
 let BackgroundHeight:CGFloat = 384
 
 public class Simulator : NSObject {
-
-
-    //// Drawing Methods
-
-    public class func drawSimulation(backgroundXOffset: CGFloat, backgroundYOffset: CGFloat, characterXOffset: CGFloat, characterYOffset: CGFloat) {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()
-
-        //// Color Declarations
-        let gradientStart = UIColor(red: 0.720, green: 0.984, blue: 1.000, alpha: 1.000)
-        let gradientStop1 = UIColor(red: 0.423, green: 0.707, blue: 0.850, alpha: 1.000)
-        let gradientStop2 = UIColor(red: 0.825, green: 0.801, blue: 1.000, alpha: 1.000)
-        var gradientStop2HueComponent: CGFloat = 1,
-            gradientStop2SaturationComponent: CGFloat = 1,
-            gradientStop2BrightnessComponent: CGFloat = 1
-        gradientStop2.getHue(&gradientStop2HueComponent, saturation: &gradientStop2SaturationComponent, brightness: &gradientStop2BrightnessComponent, alpha: nil)
-
-        let bgBorder = UIColor(hue: gradientStop2HueComponent, saturation: 0.8, brightness: gradientStop2BrightnessComponent, alpha: CGColorGetAlpha(gradientStop2.CGColor))
-        let gradientEnd = UIColor(red: 0.508, green: 0.554, blue: 0.981, alpha: 1.000)
-        let characterColor = UIColor(red: 0.879, green: 0.300, blue: 0.300, alpha: 1.000)
-
-        //// Gradient Declarations
-        let bgGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [gradientStart.CGColor, UIColor(red: 0.572, green: 0.846, blue: 0.925, alpha: 1.000).CGColor, gradientStop1.CGColor, gradientStop2.CGColor, gradientEnd.CGColor], [0, 0.16, 0.31, 0.67, 1])
-
-        //// Variable Declarations
-//        let screenCorner = CGPointMake(325, 197)
-//        let deviceScreenWidth = CGFloat(300)
-//        let deviceScreenHeight = CGFloat(225)
-//        let backgroundWidth = CGFloat(512)
-//        let backgroundHeight = CGFloat(384)
-
-        //// Background Drawing
-        CGContextSaveGState(context)
-        CGContextTranslateCTM(context, backgroundXOffset, backgroundYOffset)
-
-        let backgroundRect = CGRectMake(ScreenCorner.x, ScreenCorner.y, BackgroundWidth, BackgroundHeight)
-        let backgroundPath = UIBezierPath(rect: backgroundRect)
-        CGContextSaveGState(context)
-        backgroundPath.addClip()
-        let backgroundResizeRatio: CGFloat = min(backgroundRect.width / 512, backgroundRect.height / 384)
-        CGContextDrawRadialGradient(context, bgGradient,
-            CGPointMake(backgroundRect.midX + 2.09 * backgroundResizeRatio, backgroundRect.midY + -2.09 * backgroundResizeRatio), 355.85 * backgroundResizeRatio,
-            CGPointMake(backgroundRect.midX + 161.78 * backgroundResizeRatio, backgroundRect.midY + 83.82 * backgroundResizeRatio), 12.56 * backgroundResizeRatio,
-            UInt32(kCGGradientDrawsBeforeStartLocation) | UInt32(kCGGradientDrawsAfterEndLocation))
-        CGContextRestoreGState(context)
-        bgBorder.setStroke()
-        backgroundPath.lineWidth = 1
-        backgroundPath.stroke()
-
-        CGContextRestoreGState(context)
-
-
-        //// DeviceScreen Drawing
-        CGContextSaveGState(context)
-
-        let deviceScreenPath = UIBezierPath(rect: CGRectMake(ScreenCorner.x, ScreenCorner.y, DeviceScreenWidth, DeviceScreenHeight))
-        UIColor.blackColor().setStroke()
-        deviceScreenPath.lineWidth = 2
-        deviceScreenPath.stroke()
-
-        CGContextRestoreGState(context)
-
-
-        //// Oval Drawing
-        CGContextSaveGState(context)
-        CGContextTranslateCTM(context, characterXOffset, characterYOffset)
-
-        var ovalPath = UIBezierPath(ovalInRect: CGRectMake(ScreenCorner.x, ScreenCorner.y, 20, 20))
-        characterColor.setFill()
-        ovalPath.fill()
-
-        CGContextRestoreGState(context)
-    }
-
+  
+  
+  //// Drawing Methods
+  
+  public class func drawSimulation(backgroundXOffset: CGFloat, backgroundYOffset: CGFloat, characterXOffset: CGFloat, characterYOffset: CGFloat) {
+    //// General Declarations
+    let context = UIGraphicsGetCurrentContext()
+    
+    //// Color Declarations
+    let gradientStart = UIColor(red: 0.720, green: 0.984, blue: 1.000, alpha: 1.000)
+    let gradientStop1 = UIColor(red: 0.423, green: 0.707, blue: 0.850, alpha: 1.000)
+    let gradientStop2 = UIColor(red: 0.825, green: 0.801, blue: 1.000, alpha: 1.000)
+    var gradientStop2HueComponent: CGFloat = 1,
+    gradientStop2SaturationComponent: CGFloat = 1,
+    gradientStop2BrightnessComponent: CGFloat = 1
+    gradientStop2.getHue(&gradientStop2HueComponent, saturation: &gradientStop2SaturationComponent, brightness: &gradientStop2BrightnessComponent, alpha: nil)
+    
+    let bgBorder = UIColor(hue: gradientStop2HueComponent, saturation: 0.8, brightness: gradientStop2BrightnessComponent, alpha: CGColorGetAlpha(gradientStop2.CGColor))
+    let gradientEnd = UIColor(red: 0.508, green: 0.554, blue: 0.981, alpha: 1.000)
+    let characterColor = UIColor(red: 0.879, green: 0.300, blue: 0.300, alpha: 1.000)
+    
+    //// Gradient Declarations
+    let bgGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [gradientStart.CGColor, UIColor(red: 0.572, green: 0.846, blue: 0.925, alpha: 1.000).CGColor, gradientStop1.CGColor, gradientStop2.CGColor, gradientEnd.CGColor], [0, 0.16, 0.31, 0.67, 1])
+    
+    //// Variable Declarations
+    //        let screenCorner = CGPointMake(325, 197)
+    //        let deviceScreenWidth = CGFloat(300)
+    //        let deviceScreenHeight = CGFloat(225)
+    //        let backgroundWidth = CGFloat(512)
+    //        let backgroundHeight = CGFloat(384)
+    
+    //// Background Drawing
+    CGContextSaveGState(context)
+    CGContextTranslateCTM(context, backgroundXOffset, backgroundYOffset)
+    
+    let backgroundRect = CGRectMake(ScreenCorner.x, ScreenCorner.y, BackgroundWidth, BackgroundHeight)
+    let backgroundPath = UIBezierPath(rect: backgroundRect)
+    CGContextSaveGState(context)
+    backgroundPath.addClip()
+    let backgroundResizeRatio: CGFloat = min(backgroundRect.width / 512, backgroundRect.height / 384)
+    CGContextDrawRadialGradient(context, bgGradient,
+      CGPointMake(backgroundRect.midX + 2.09 * backgroundResizeRatio, backgroundRect.midY + -2.09 * backgroundResizeRatio), 355.85 * backgroundResizeRatio,
+      CGPointMake(backgroundRect.midX + 161.78 * backgroundResizeRatio, backgroundRect.midY + 83.82 * backgroundResizeRatio), 12.56 * backgroundResizeRatio,
+      UInt32(kCGGradientDrawsBeforeStartLocation) | UInt32(kCGGradientDrawsAfterEndLocation))
+    CGContextRestoreGState(context)
+    bgBorder.setStroke()
+    backgroundPath.lineWidth = 1
+    backgroundPath.stroke()
+    
+    CGContextRestoreGState(context)
+    
+    
+    //// DeviceScreen Drawing
+    CGContextSaveGState(context)
+    
+    let deviceScreenPath = UIBezierPath(rect: CGRectMake(ScreenCorner.x, ScreenCorner.y, DeviceScreenWidth, DeviceScreenHeight))
+    UIColor.blackColor().setStroke()
+    deviceScreenPath.lineWidth = 2
+    deviceScreenPath.stroke()
+    
+    CGContextRestoreGState(context)
+    
+    
+    //// Oval Drawing
+    CGContextSaveGState(context)
+    CGContextTranslateCTM(context, characterXOffset, characterYOffset)
+    
+    var ovalPath = UIBezierPath(ovalInRect: CGRectMake(ScreenCorner.x, ScreenCorner.y, 20, 20))
+    characterColor.setFill()
+    ovalPath.fill()
+    
+    CGContextRestoreGState(context)
+  }
+  
 }
 
 @objc protocol StyleKitSettableImage {
-    var image: UIImage! { get set }
+  var image: UIImage! { get set }
 }
 
 @objc protocol StyleKitSettableSelectedImage {
-    var selectedImage: UIImage! { get set }
+  var selectedImage: UIImage! { get set }
 }
