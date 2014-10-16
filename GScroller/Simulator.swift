@@ -50,6 +50,10 @@ public class Simulator : NSObject {
     //        let deviceScreenHeight = CGFloat(225)
     //        let backgroundWidth = CGFloat(512)
     //        let backgroundHeight = CGFloat(384)
+    let bgXOffsetTextPosX = backgroundXOffset / 2.0
+    let bgXOffsetText = "\(Int(round(backgroundXOffset)))"
+    let bgYOffsetTextPosY = backgroundYOffset / 2.0
+    let bgYOffsetText = "\(Int(round(backgroundYOffset)))"
     
     //// Background Drawing
     CGContextSaveGState(context)
@@ -90,6 +94,36 @@ public class Simulator : NSObject {
     var ovalPath = UIBezierPath(ovalInRect: CGRectMake(ScreenCorner.x, ScreenCorner.y, 20, 20))
     characterColor.setFill()
     ovalPath.fill()
+    
+    CGContextRestoreGState(context)
+    
+    
+    //// BgXOffsetDisplay Drawing
+    CGContextSaveGState(context)
+    CGContextTranslateCTM(context, 300, 178)
+    
+    let bgXOffsetDisplayRect = CGRectMake(bgXOffsetTextPosX, backgroundYOffset, 50, 16)
+    let bgXOffsetDisplayStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+    bgXOffsetDisplayStyle.alignment = NSTextAlignment.Center
+    
+    let bgXOffsetDisplayFontAttributes = [NSFontAttributeName: UIFont(name: "Helvetica", size: 12), NSForegroundColorAttributeName: UIColor.blackColor(), NSParagraphStyleAttributeName: bgXOffsetDisplayStyle]
+    
+    NSString(string: bgXOffsetText).drawInRect(bgXOffsetDisplayRect, withAttributes: bgXOffsetDisplayFontAttributes);
+    
+    CGContextRestoreGState(context)
+    
+    
+    //// YOffsetText Drawing
+    CGContextSaveGState(context)
+    CGContextTranslateCTM(context, 266, 191)
+    
+    let yOffsetTextRect = CGRectMake(backgroundXOffset, bgYOffsetTextPosY, 50, 16)
+    let yOffsetTextStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+    yOffsetTextStyle.alignment = NSTextAlignment.Right
+    
+    let yOffsetTextFontAttributes = [NSFontAttributeName: UIFont(name: "Helvetica", size: 12), NSForegroundColorAttributeName: UIColor.blackColor(), NSParagraphStyleAttributeName: yOffsetTextStyle]
+    
+    NSString(string: bgYOffsetText).drawInRect(yOffsetTextRect, withAttributes: yOffsetTextFontAttributes);
     
     CGContextRestoreGState(context)
   }
