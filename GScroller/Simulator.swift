@@ -54,7 +54,9 @@ public class Simulator : NSObject {
     let bgXOffsetText = "\(Int(round(backgroundXOffset)))"
     let bgYOffsetTextPosY = backgroundYOffset / 2.0
     let bgYOffsetText = "\(Int(round(backgroundYOffset)))"
-    
+    let chXOffsetText = "\(Int(round(characterXOffset)))"
+    let chYOffsetText = "\(Int(round(characterYOffset)))"
+
     //// Background Drawing
     CGContextSaveGState(context)
     CGContextTranslateCTM(context, backgroundXOffset, backgroundYOffset)
@@ -124,7 +126,37 @@ public class Simulator : NSObject {
     let yOffsetTextFontAttributes = [NSFontAttributeName: UIFont(name: "Helvetica", size: 12), NSForegroundColorAttributeName: UIColor.blackColor(), NSParagraphStyleAttributeName: yOffsetTextStyle]
     
     NSString(string: bgYOffsetText).drawInRect(yOffsetTextRect, withAttributes: yOffsetTextFontAttributes);
-    
+
+    CGContextRestoreGState(context)
+
+
+    //// Char Y Offset Text Drawing
+    CGContextSaveGState(context)
+    CGContextTranslateCTM(context, 350, 200)
+
+    let charYOffsetTextRect = CGRectMake(characterXOffset, characterYOffset, 33, 15)
+    let charYOffsetTextStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+    charYOffsetTextStyle.alignment = NSTextAlignment.Left
+
+    let charYOffsetTextFontAttributes = [NSFontAttributeName: UIFont(name: "Helvetica", size: 12), NSForegroundColorAttributeName: UIColor.blackColor(), NSParagraphStyleAttributeName: charYOffsetTextStyle]
+
+    NSString(string: chYOffsetText).drawInRect(charYOffsetTextRect, withAttributes: charYOffsetTextFontAttributes);
+
+    CGContextRestoreGState(context)
+
+
+    //// Char X Offset Text Drawing
+    CGContextSaveGState(context)
+    CGContextTranslateCTM(context, 310, 224)
+
+    let charXOffsetTextRect = CGRectMake(characterXOffset, characterYOffset, 50, 16)
+    let charXOffsetTextStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+    charXOffsetTextStyle.alignment = NSTextAlignment.Center
+
+    let charXOffsetTextFontAttributes = [NSFontAttributeName: UIFont(name: "Helvetica", size: 12), NSForegroundColorAttributeName: UIColor.blackColor(), NSParagraphStyleAttributeName: charXOffsetTextStyle]
+
+    NSString(string: chXOffsetText).drawInRect(charXOffsetTextRect, withAttributes: charXOffsetTextFontAttributes);
+
     CGContextRestoreGState(context)
   }
   
